@@ -123,42 +123,15 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/hackstarsj/student_management_system_part_11/raw/master/LICENSE)
 
-
-<h2>Complete Video Tutorial : <a href="https://www.youtube.com/playlist?list=PLb-NlfexLTk_tUlAPj05s2zc8JgHTVkpH">Link</a></h2>
-
-<p>Use for Personal Use and for Learning Purpose for Commercial Use Please Contact : <a href="mailto:supercoders.tech@gmail.com">supercoders.tech@gmail.com</p>
-
-<a href="http://studentmanagementsystem22.herokuapp.com/">Live Project Link</a>
-<h4>Login</h4>
 <pre>
-adminx2@gmail.com
-adminx2
+admin@gmail.com
+admin
 </pre>
 
-<h2> How to Deploy on Heroku </h2> 
-Tutorial Link : <a href="https://youtu.be/n4ly0_S3uGo">https://youtu.be/n4ly0_S3uGo</a>
 
 <br>
 <br>
-<hr>
-<h2>Donate</h2>
-<table>
-<tr>
-<td style="width:25%">
-<p><b>Paypal : </b><br><a href="https://www.paypal.me/hackstarsj"><img src="https://github.com/hackstarsj/student_management_system_part_11/blob/master/screenshots/paypal_donate.jpg"/></a> </p>
-</td>
-<td style="width:25%">
-<p><b>Donate 50 : </b><br><a href="https://imjo.in/TDfYvS"><img src="https://github.com/hackstarsj/student_management_system_part_11/blob/master/screenshots/donate-paytm.png"/></a> </p>
-</td>
-<td style="width:25%">
-<p><b>Donate 100 : </b><br><a href="https://imjo.in/k8jdjD"><img src="https://github.com/hackstarsj/student_management_system_part_11/blob/master/screenshots/donate-paytm.png"/></a> </p>
-</td>
-<td style="width:25%">
-<p><b>Donate 200 : </b><br><a href="https://imjo.in/eSd5ft"><img src="https://github.com/hackstarsj/student_management_system_part_11/blob/master/screenshots/donate-paytm.png"/></a> </p>
-</td>
-</tr>
-</table>
-<hr>
+
 <h2>Installation Steps : </h2>
 
 <p>Project Dependency :</p>
