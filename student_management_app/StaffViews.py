@@ -11,7 +11,8 @@ from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 
 from student_management_app.models import Subjects, SessionYearModel, Students, Attendance, AttendanceReport, \
-    LeaveReportStaff, Staffs, FeedBackStaffs, CustomUser, Courses, NotificationStaffs, StudentResult, OnlineClassRoom
+    LeaveReportStaff, Staffs, FeedBackStaffs, CustomUser, Courses, NotificationStaffs, StudentResult, OnlineClassRoom, NotificationStudent
+import requests
 
 
 def staff_home(request):
@@ -321,3 +322,53 @@ def start_live_classroom_process(request):
 
 def returnHtmlWidget(request):
     return render(request,"widget.html")
+
+def staff_send_notification_student(request):
+    subjects=Subjects.objects.filter(staff_id=request.user.id)
+    course_id_list=[]
+    for subject in subjects:
+        course=Courses.objects.get(id=subject.course_id.id)
+        course_id_list.append(course.id)
+
+    final_course=[]
+    for course_id in course_id_list:
+        if course_id not in final_course:
+            final_course.append(course_id)
+
+    students=Students.objects.filter(course_id__in=final_course)
+    return render(request,"staff_template/send_student_notification.html",{"students":students})
+
+@csrf_exempt
+def staff_send_student_notification(request):
+    message=request.POST.get("message")
+    staff=Staffs.objects.get(admin=request.user.id)
+    subjects=Subjects.objects.filter(staff_id=staff.admin.id)
+    course_id_list=[]
+    for subject in subjects:
+        course=Courses.objects.get(id=subject.course_id.id)
+        course_id_list.append(course.id)
+
+    final_course=[]
+    for course_id in course_id_list:
+        if course_id not in final_course:
+            final_course.append(course_id)
+
+    students=Students.objects.filter(course_id__in=final_course)
+    for student in students:
+        token=student.fcm_token
+        url="https://fcm.googleapis.com/fcm/send"
+        body={
+            "notification":{
+                "title":"Student Management System",
+                "body":message,
+                "click_action": "https://studentmanagementsystem22.herokuapp.com/student_all_notification",
+                "icon": "http://studentmanagementsystem22.herokuapp.com/static/dist/img/user2-160x160.jpg"
+            },
+            "to":token
+        }
+        headers={"Content-Type":"application/json","Authorization":"key=SERVER_KEY_HERE"}
+        data=requests.post(url,data=json.dumps(body),headers=headers)
+        notification=NotificationStudent(student_id=student,message=message)
+        notification.save()
+        print(data.text)
+    return HttpResponse("True")

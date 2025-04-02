@@ -25,12 +25,6 @@ from student_management_system import settings
 
 urlpatterns = [
     path('demo',views.showDemoPage),
-    path('signup_admin',views.signup_admin,name="signup_admin"),
-    path('signup_student',views.signup_student,name="signup_student"),
-    path('signup_staff',views.signup_staff,name="signup_staff"),
-    path('do_admin_signup',views.do_admin_signup,name="do_admin_signup"),
-    path('do_staff_signup',views.do_staff_signup,name="do_staff_signup"),
-    path('do_signup_student',views.do_signup_student,name="do_signup_student"),
     path('admin/', admin.site.urls),
     path('accounts/',include('django.contrib.auth.urls')),
     path('',views.ShowLoginPage,name="show_login"),
@@ -105,7 +99,8 @@ urlpatterns = [
     path('fetch_result_student',StaffViews.fetch_result_student, name="fetch_result_student"),
     path('start_live_classroom',StaffViews.start_live_classroom, name="start_live_classroom"),
     path('start_live_classroom_process',StaffViews.start_live_classroom_process, name="start_live_classroom_process"),
-
+    path('staff_send_notification_student',StaffViews.staff_send_notification_student, name="staff_send_notification_student"),
+    path('staff_send_student_notification',StaffViews.staff_send_student_notification, name="staff_send_student_notification"),
 
     path('student_home', StudentViews.student_home, name="student_home"),
     path('student_view_attendance', StudentViews.student_view_attendance, name="student_view_attendance"),
